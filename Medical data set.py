@@ -1,4 +1,6 @@
 import csv
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Function to load list data from a CSV column
 def load_list_data(csv_file, column_name):
@@ -68,3 +70,11 @@ patient_info.summary()
 
 
 patients_dict = patient_info.create_dictionary()
+
+#visualize the relationship between bmi and charges:
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x=patients_dict["bmi"], y=patients_dict["charges"], hue=patients_dict["smoker"])
+plt.title("BMI vs Insurance Charges")
+plt.xlabel("BMI")
+plt.ylabel("Charges")
+plt.show()
